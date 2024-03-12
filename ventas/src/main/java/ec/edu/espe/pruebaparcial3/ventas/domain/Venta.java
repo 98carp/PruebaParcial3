@@ -9,7 +9,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@Document(collection ="producto")
+@Document(collection ="venta")
 @Builder
 public class Venta {
     @Id
