@@ -51,9 +51,6 @@ public class ProductoService {
         return this.productoRepository.findByCodigoUnico(codigo);
     }
 
-
-
-
     private Producto transformProductoReq(ProductoReq productoReq) {
         Producto producto=Producto.builder()
                             .codigoUnico(productoReq.getCodigoUnico())
