@@ -29,6 +29,24 @@ public class ProductoService {
 
     }
 
+    @Transactional
+    public Producto actualizarProducto(ProductoReq productoReq) {
+        Producto producto = this.transformProductoReq(productoReq);
+        Producto productotemp = this.productoRepository.findByCodigoUnico(productoReq.getCodigoUnico());
+        if (productotemp == null) {
+            throw new RuntimeException("El producto no existe");
+        } else {
+            productotemp.setDescripcion(producto.getDescripcion());
+            productotemp.setPrecio(producto.getPrecio());
+            productotemp.setExistencia(producto.getExistencia());
+            productotemp.setNombre(producto.getNombre());
+            return this.productoRepository.save(productotemp);
+        }
+    }
+
+
+
+
     private Producto transformProductoReq(ProductoReq productoReq) {
         Producto producto=Producto.builder()
                             .codigoUnico(productoReq.getCodigoUnico())
