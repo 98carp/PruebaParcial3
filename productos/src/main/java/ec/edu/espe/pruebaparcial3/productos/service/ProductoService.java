@@ -43,6 +43,13 @@ public class ProductoService {
             return this.productoRepository.save(productotemp);
         }
     }
+    public Producto obtenerProductoPorCodigo(String codigo){
+        Producto producto= this.productoRepository.findByCodigoUnico(codigo);
+        if(producto==null){
+            throw new RuntimeException("No existe el producto");
+        }
+        return this.productoRepository.findByCodigoUnico(codigo);
+    }
 
 
 
